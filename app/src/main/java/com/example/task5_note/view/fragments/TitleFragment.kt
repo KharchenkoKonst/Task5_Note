@@ -9,8 +9,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.task5_note.R
 import com.example.task5_note.databinding.FragmentTitleBinding
+import com.example.task5_note.model.models.Note
 import com.example.task5_note.repository.RepositoryImpl
+import com.example.task5_note.utils.NOTE_DATA
 import com.example.task5_note.view.activities.MainActivity
+import com.example.task5_note.view.adapters.NoteRecyclerAdapter
 import com.example.task5_note.viewmodel.TitleNotesViewModel
 import com.example.task5_note.viewmodel.TitleNotesViewModelFactory
 
@@ -23,15 +26,45 @@ class TitleFragment : Fragment() {
     }
     private val viewModel: TitleNotesViewModel by viewModels { viewModelFactory }
     private lateinit var binding: FragmentTitleBinding
+    private lateinit var adapter: NoteRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_title, container, false)
-        binding.newNoteBtn.setOnClickListener {
-            (requireActivity() as MainActivity).navController.navigate(R.id.action_titleFragment_to_newNoteFragment)
-        }
+
+        bindInit()
+        subscribeToVM()
+
         return binding.root
     }
+
+    fun bindInit() {
+        binding.lifecycleOwner = this
+        binding.newNoteBtn.setOnClickListener {
+            (requireActivity() as MainActivity).navController.navigate(R.id.action_titleFragment_to_noteContentFragment)
+        }
+
+        //как сделать лучше?
+        adapter = NoteRecyclerAdapter(requireContext()) { note ->
+            openNote(note)
+        }
+        binding.recycler.adapter = adapter
+    }
+
+    private fun subscribeToVM() {
+        viewModel.getAllNotes().observe(viewLifecycleOwner, { notes ->
+            adapter.setData(notes)
+        })
+    }
+
+    private fun openNote(note: Note) {
+        val bundle = Bundle().apply { putParcelable(NOTE_DATA, note) }
+        (requireActivity() as MainActivity).navController.navigate(
+            R.id.action_titleFragment_to_noteContentFragment,
+            bundle
+        )
+    }
+
 }

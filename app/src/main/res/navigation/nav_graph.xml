@@ -11,30 +11,18 @@
         android:label="fragment_title"
         tools:layout="@layout/fragment_title" >
         <action
-            android:id="@+id/action_titleFragment_to_newNoteFragment"
-            app:destination="@id/newNoteFragment"
+            android:id="@+id/action_titleFragment_to_noteContentFragment"
+            app:destination="@id/noteContentFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
-        <action
-            android:id="@+id/action_titleFragment_to_notesPagerFragment"
-            app:destination="@id/notesPagerFragment" />
     </fragment>
     <fragment
-        android:id="@+id/newNoteFragment"
-        android:name="com.example.task5_note.view.fragments.NewNoteFragment"
-        android:label="fragment_new_note"
-        tools:layout="@layout/fragment_new_note" >
+        android:id="@+id/noteContentFragment"
+        android:name="com.example.task5_note.view.fragments.NoteContentFragment"
+        android:label="fragment_note_content"
+        tools:layout="@layout/fragment_note_content">
         <action
-            android:id="@+id/action_newNoteFragment_to_titleFragment"
-            app:destination="@id/titleFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/notesPagerFragment"
-        android:name="com.example.task5_note.NotesPagerFragment"
-        android:label="fragment_notes_pager"
-        tools:layout="@layout/fragment_notes_pager" >
-        <action
-            android:id="@+id/action_notesPagerFragment_to_titleFragment"
+            android:id="@+id/action_noteContentFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
     </fragment>
 </navigation>

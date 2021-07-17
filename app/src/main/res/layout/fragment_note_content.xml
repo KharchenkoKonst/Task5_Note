@@ -2,6 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.task5_note.viewmodel.NoteContentViewModel" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,8 +21,9 @@
             android:layout_height="50dp"
             android:layout_margin="5dp"
             android:background="@drawable/style_edit_text"
-            android:hint="Заголовок"
+            android:hint="@string/header_tooltip"
             android:paddingHorizontal="5dp"
+            android:text="@={viewModel.title}"
             android:textAppearance="?android:attr/textAppearanceLarge"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,7 +36,9 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/style_edit_text"
             android:gravity="top|start"
-            android:paddingHorizontal="5dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:text="@={viewModel.content}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_input_field" />
 

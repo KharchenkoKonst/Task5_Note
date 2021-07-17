@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="itemViewModel"
-            type="com.example.task5_note.viewmodel.NoteItemViewModel" />
+            name="note"
+            type="com.example.task5_note.model.models.Note" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -22,11 +22,11 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="@{itemViewModel.title}"
                 android:id="@+id/title_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
+                android:text="@{note.noteTitle}"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
+                android:text="@{note.noteContent}"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 app:layout_constraintTop_toBottomOf="@id/title_header" />
         </androidx.constraintlayout.widget.ConstraintLayout>

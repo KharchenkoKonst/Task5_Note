@@ -1,16 +1,52 @@
 package com.example.task5_note.view.adapters
 
-import android.view.View
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.task5_note.databinding.FragmentTitleBinding
+import com.example.task5_note.BR
+import com.example.task5_note.R
 import com.example.task5_note.databinding.RecyclerItemBinding
-import com.example.task5_note.viewmodel.TitleNotesViewModel
+import com.example.task5_note.model.models.Note
 
-class NoteRecyclerAdapter {
+class NoteRecyclerAdapter(private val context: Context, private val onSelect:(Note) -> Unit) :
+    RecyclerView.Adapter<NoteRecyclerAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val binding: RecyclerItemBinding) : RecyclerView.ViewHolder(binding.root)
-    fun bind (viewModel: TitleNotesViewModel, position: Int){
+    private var dataNotes = emptyList<Note>()
 
+    fun setData(newData: List<Note>) {
+        dataNotes = newData
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding: RecyclerItemBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(context),
+            R.layout.recycler_item,
+            parent,
+            false
+        )
+        return ViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(dataNotes[position], onSelect)
+    }
+
+    override fun getItemCount() = dataNotes.size
+
+
+    class ViewHolder(private val binding: RecyclerItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(note: Note, onSelect: (Note) -> Unit) {
+            binding.setVariable(BR.note, note)
+            binding.executePendingBindings()
+
+            binding.root.setOnClickListener {
+                onSelect(note)
+            }
+        }
     }
 
 }
