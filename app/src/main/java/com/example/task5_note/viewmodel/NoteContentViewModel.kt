@@ -47,6 +47,7 @@ class NoteContentViewModel(private val repository: INoteRepository, private val 
             }
         }
         onSaveNoteSuccessful.call()
+        return
     }
 
     private fun getCurrentDate(): String {

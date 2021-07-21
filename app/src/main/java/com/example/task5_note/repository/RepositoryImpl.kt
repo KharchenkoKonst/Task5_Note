@@ -6,7 +6,7 @@ import com.example.task5_note.model.database.AppDatabase
 import com.example.task5_note.model.models.Note
 import kotlinx.coroutines.coroutineScope
 
-class RepositoryImpl(context: Context) : INoteRepository {
+open class RepositoryImpl(context: Context) : INoteRepository {
     private val dao = AppDatabase.getDatabase(context).noteDao()
 
     override suspend fun insertNote(note: Note) {
