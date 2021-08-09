@@ -1,5 +1,6 @@
 package com.example.task5_note.model.database
 
+import android.app.Application
 import android.content.Context
 import androidx.room.*
 import com.example.task5_note.model.models.Note

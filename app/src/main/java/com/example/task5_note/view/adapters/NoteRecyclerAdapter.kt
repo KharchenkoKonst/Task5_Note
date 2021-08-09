@@ -10,7 +10,7 @@ import com.example.task5_note.R
 import com.example.task5_note.databinding.RecyclerItemBinding
 import com.example.task5_note.model.models.Note
 
-class NoteRecyclerAdapter(private val context: Context, private val onSelect:(Note) -> Unit) :
+class NoteRecyclerAdapter(private val context: Context, private val onSelect: (Note) -> Unit) :
     RecyclerView.Adapter<NoteRecyclerAdapter.ViewHolder>() {
 
     private var dataNotes = emptyList<Note>()

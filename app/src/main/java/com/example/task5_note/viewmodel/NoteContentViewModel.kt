@@ -10,6 +10,10 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * ViewModel обрабатывает как открытие существующей заметки, так и добавление новой. В первом случае
+ * поля заголовка и содержимого заполняются полученными из вызывающего фрагмента данными.
+ */
 class NoteContentViewModel(private val repository: INoteRepository, private val note: Note?) :
     ViewModel() {
 

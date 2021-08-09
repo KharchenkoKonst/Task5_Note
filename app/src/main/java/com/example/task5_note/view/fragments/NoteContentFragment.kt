@@ -33,15 +33,15 @@ class NoteContentFragment : Fragment() {
     ): View {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_note_content, container, false)
+        binding.viewModel = viewModel
+        binding.saveNoteBtn.setOnClickListener {
+            viewModel.saveNote()
+        }
         subscribeToVM()
         return binding.root
     }
 
     private fun subscribeToVM() {
-        binding.viewModel = viewModel
-        binding.saveNoteBtn.setOnClickListener {
-            viewModel.saveNote()
-        }
         viewModel.onErrorSaveNote.observe(viewLifecycleOwner, {
             Toast.makeText(
                 requireContext(),

@@ -40,13 +40,12 @@ class TitleFragment : Fragment() {
         return binding.root
     }
 
-    fun bindInit() {
+    private fun bindInit() {
         binding.lifecycleOwner = this
         binding.newNoteBtn.setOnClickListener {
             (requireActivity() as MainActivity).navController.navigate(R.id.action_titleFragment_to_noteContentFragment)
         }
 
-        //как сделать лучше?
         adapter = NoteRecyclerAdapter(requireContext()) { note ->
             openNote(note)
         }
