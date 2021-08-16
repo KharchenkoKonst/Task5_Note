@@ -52,7 +52,7 @@ class NoteContentFragment : Fragment() {
         viewModel.onSaveNoteSuccessful.observe(viewLifecycleOwner, {
             Toast.makeText(
                 requireContext(),
-                getString(R.string.empty_note_toast),
+                getString(R.string.save_note_toast),
                 Toast.LENGTH_LONG
             ).show()
         })
