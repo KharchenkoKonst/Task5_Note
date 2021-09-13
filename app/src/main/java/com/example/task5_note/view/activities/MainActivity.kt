@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.task5_note.R
 import com.example.task5_note.databinding.ActivityMainBinding
+
 /*
 Приоритетно (выполнено):
 
@@ -24,6 +25,7 @@ import com.example.task5_note.databinding.ActivityMainBinding
 MainActivity - контейнер для фрагментов с использованием navigation component.
  */
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
     val navController by lazy {
         Navigation.findNavController(this, binding.navHost.id)

@@ -36,9 +36,9 @@ class NoteRecyclerAdapter(private val context: Context, private val onSelect: (N
 
     override fun getItemCount() = dataNotes.size
 
-
     class ViewHolder(private val binding: RecyclerItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(note: Note, onSelect: (Note) -> Unit) {
             binding.setVariable(BR.note, note)
             binding.executePendingBindings()
@@ -48,5 +48,4 @@ class NoteRecyclerAdapter(private val context: Context, private val onSelect: (N
             }
         }
     }
-
 }

@@ -1,5 +1,6 @@
 package com.example.task5_note.viewmodel
 
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
